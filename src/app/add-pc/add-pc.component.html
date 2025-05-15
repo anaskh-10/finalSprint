@@ -1,0 +1,45 @@
+<div class="container">
+    <div>
+      <h2>Ajouter un PC :</h2>
+    </div>
+    <form >
+      <div hidden class="col-sm-2 col-md-2 col-lg-2">
+        <label >ID PC</label>
+        <input type="text" [(ngModel)]="newPc.idPc" name="idPc" class="form-control">
+      </div>
+  
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Marque PC</label>
+        <input type="text" [(ngModel)]="newPc.marquePc" name="marquePc" class="form-control">
+      </div>
+  
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Reference PC</label>
+        <input type="text" [(ngModel)]="newPc.referencePc" name="referencePc" class="form-control">
+      </div>
+
+      <div class="col-sm-2 col-md-2 col-lg-2">
+        <label>Prix PC</label>
+        <input type="number" [(ngModel)]="newPc.prixPc" name="prixPc" class="form-control">
+      </div>
+  
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Date de Creation</label>
+        <input type="date" [(ngModel)]="newPc.dateCreation" name="dateCreation" class="form-control">
+      </div>
+
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Fournisseurs</label>
+        <select class="form-control form-control-lg" id="id" name="id" [(ngModel)]="newId">
+          @for (four of fournisseurs; track four.id) {
+            <option [value]="four.id">{{ four.nom }} {{ four.prenom }}</option>
+          }
+        </select>
+        
+        </div>
+      <div class="mt-2">
+        <button type="submit"(click)="addPc()" class="btn btn-success">Ajouter</button>
+      </div>
+    </form>
+  </div>
+  

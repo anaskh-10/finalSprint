@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <h1>Gestion de Fournisseurs</h1>
+            <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+                <app-update-fournisseur [fournisseur]="updatedFour"
+                [ajout]="ajout"
+                (fournisseurUpdated)="fournisseurUpdated($event)">
+            </app-update-fournisseur>
+            </div>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom </th>
+                        <th>Prenom </th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                @for(four of fournisseurs; track four.id)
+                {
+                <tbody>
+                    <tr>
+                        <td>{{four.id}}</td>
+                        <td>{{four.nom}}</td>
+                        <td>{{four.prenom}}</td>
+                        <td><a class="btn btn-success" (click)="updateFour(four)">Editer</a></td>
+                    </tr>
+                </tbody>
+                }
+            </table>
+        </div>
+    </div>
+</div>

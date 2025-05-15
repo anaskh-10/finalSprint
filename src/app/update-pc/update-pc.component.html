@@ -1,0 +1,50 @@
+<div class="container">
+    <div>
+      <h2>Modifier un PC :</h2>
+    </div>
+    <form>
+      <div hidden class="col-sm-2 col-md-2 col-lg-2">
+        <label>ID PC</label>
+        <input readonly type="text" [(ngModel)]="currentPc.idPc"
+               name="idPc" class="form-control">
+      </div>
+  
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Marque PC</label>
+        <input type="text" [(ngModel)]="currentPc.marquePc"
+               name="marquePc" class="form-control">
+      </div>
+
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Reference PC</label>
+        <input type="text" [(ngModel)]="currentPc.referencePc"
+               name="referencePc" class="form-control">
+      </div>
+  
+      <div class="col-sm-2 col-md-2 col-lg-2">
+        <label>Prix PC</label>
+        <input type="number" [(ngModel)]="currentPc.prixPc"
+               name="prixPc" class="form-control">
+      </div>
+  
+      <div class="col-sm-4 col-md-4 col-lg-4">
+        <label>Date d'achat</label>
+        <input type="date"
+               [ngModel]="currentPc.dateCreation | date: 'yyyy-MM-dd'"
+               (ngModelChange)="currentPc.dateCreation = $event"
+               name="dateCreation" class="form-control">
+      </div>
+      <select class="form-control form-control-lg" id="id" name="id"
+        [(ngModel)]="updatedId">
+        @for(four of fournisseurs; track four.id)
+        {
+        <option [value]="four.id"> {{four.nom}} {{four.prenom}} </option>
+        }
+        </select>
+
+      <div class="mt-2">
+        <button type="submit" (click)="updatePc()" class="btn btn-success">Modifier</button>
+      </div>
+    </form>
+  </div>
+  

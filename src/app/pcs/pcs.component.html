@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="card shadow mb-4">
+    <div class="card-body">
+
+      @if (pcs.length > 0) {
+        <h2>Nombre total de PCs : {{ pcs.length }}</h2>
+      }
+
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th colspan="8">Liste de Pcs</th>
+          </tr>
+          <tr>
+            <th>Number</th>
+            <th>Id</th>
+            <th>Marque</th>
+            <th>Reference</th>
+            <th>Prix</th>
+            <th>Date Création</th>
+            <th>Fournisseur</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (pc of pcs; track pc.idPc; let index = $index) {
+            <tr>
+              <td>{{ index + 1 }}</td>
+              <td>{{ pc.idPc }}</td>
+              <td>{{ pc.marquePc }}</td>
+              <td>{{ pc.referencePc }}</td>
+              <td>{{ pc.prixPc }}</td>
+              <td>{{ pc.dateCreation | date:'dd/MM/yyyy' }}</td>
+              <td>{{ pc.fournisseur.nom }} {{ pc.fournisseur.prenom }}</td>
+              @if(authService.isAdmin()) {
+                <td><a class="btn btn-danger" (click)="supprimerPc(pc)">Supprimer</a></td>
+                <td><a class="btn btn-success" [routerLink]="['/updatePc', pc.idPc]">Modifier</a></td>
+              }
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="8" class="text-center text-danger">Aucun produit trouvé !</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

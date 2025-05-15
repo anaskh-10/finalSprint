@@ -1,0 +1,20 @@
+<form>
+    <div [hidden]="ajout">
+        <label>ID Fournisseur</label>
+        <input type="text" [(ngModel)]="fournisseur.id" name="idFournisseur" class="form-control w-25">
+    </div>
+    <div>
+        <label>Nom Fournisseur</label>
+        <input type="text" [(ngModel)]="fournisseur.nom" name="nom" class="form-control"
+            placeholder="Entrez un nom de fournisseur...">
+    </div>
+    <div>
+        <label>prenom Fournisseur</label>
+        <input type="text" [(ngModel)]="fournisseur.prenom" name="prenom" class="form-control"
+            placeholder="Entrez un prenom de fournisseur...">
+    </div>
+    <div class="mt-2">
+        <button type="submit" [disabled]="!fournisseur.nom" [disabled]="!fournisseur.prenom"class="btn btn-success"
+            (click)="saveFournisseur()">{{ajout ? 'Ajouter' : 'Modifier'}}</button>
+    </div>
+</form>
